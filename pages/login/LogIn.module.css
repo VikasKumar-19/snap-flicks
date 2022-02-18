@@ -1,0 +1,71 @@
+.main_container{
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.right_content{
+    height: 618px;
+    margin: auto 0;
+    padding-top: 3rem;
+}
+
+.login_card_container{
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.login_card{
+    width: 100%;
+    display: flex;
+    border: 1px solid rgb(207, 207, 207);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    gap: 1rem;
+}
+
+.signup_option{
+    border: 1px solid rgb(207, 207, 207);
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+/* 618 454 */
+
+.carousal_background_container{
+    background-image: url('../../assets/carousal_phone_image.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 454px;
+    height: 618px;
+    margin: auto 0;
+    position: relative;
+}
+
+.main_carousal{
+    width: 240px;
+    height: 427px;
+    position: absolute;
+    top: 6.20rem;
+    left: 9.45rem;
+}
+
+@media only screen and (max-width: 576px){
+    .login_card_container{
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 865px){
+    .carousal_background_container{
+        display: none;
+    }
+}
