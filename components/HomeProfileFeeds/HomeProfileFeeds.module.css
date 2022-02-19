@@ -1,0 +1,62 @@
+.videos_container{
+  height: 83vh;
+  border: 1px solid black;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  max-width: 415px;
+  overflow: auto;
+  scrollbar-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.videos_container::-webkit-scrollbar{
+  display: none;
+}
+
+.main_video_container{
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.main_video_container video{
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: aqua;
+}
+
+.video_info{
+  width: 100%;
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 14px;
+}
+
+.avatar_name{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.like_count{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .videos_container{
+    margin: 0 auto;
+    height: 75vh;
+  }
+
+}

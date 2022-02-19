@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import NavBar from '../components/TopNavbar'
+import HomeProfileFeeds from '../components/HomeProfileFeeds'
 
 export default function Home() {
   return (
@@ -10,8 +10,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar />
-      
+      <HomeProfileFeeds />
     </div>
   )
 }
