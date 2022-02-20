@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import Logo from '../../assets/instagram-Logo.png'
+import Logo from '../../assets/snap-flicks-logo.png'
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
@@ -14,6 +14,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Image from 'next/image';
+import { AuthContext } from "../../context/AuthWrapper";
 
 const settings = ["Profile", "Theme", "Logout"];
 
@@ -28,9 +29,22 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
+  async function handleSettingItem(setting){
+    if(setting === "Logout"){
+      let user = await signOutUser();
+      console.log(user);
+    }
+
+    handleCloseUserMenu();
+  }
+
+  const {signOutUser} = React.useContext(AuthContext);
+
+
+
   return (
     <>
-      <AppBar position="static">
+      <AppBar position="static" sx={{backgroundColor: "#dfe6e9"}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -82,7 +96,7 @@ const NavBar = () => {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting} onClick={()=>{handleSettingItem(setting)}}>
                     <Typography textAlign="center">{setting}</Typography>
                   </MenuItem>
                 ))}

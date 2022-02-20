@@ -33,6 +33,10 @@
     padding: 1rem;
 }
 
+.login_option span:hover{
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 576px){
     .signup_card_container{
         width: 95%;

@@ -58,6 +58,11 @@
     left: 9.45rem;
 }
 
+.signup_option span:hover, 
+.forgot_option:hover{
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 576px){
     .login_card_container{
         width: 95%;
