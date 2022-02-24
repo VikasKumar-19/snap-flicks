@@ -53,18 +53,18 @@ const LogIn = () => {
             <div className={styles.carousal_background_container}>
                 <div className={styles.main_carousal}>
                 <Carousel showThumbs={false} autoPlay={true} infiniteLoop={true} interval={2000} showArrows={false} showIndicators={false} showStatus={false}>
-                    <Image src={image1} />
-                    <Image src={image2} />
-                    <Image src={image3} />
-                    <Image src={image4} />
-                    <Image src={image5} />
+                    <Image src={image1} alt="slide 1"/>
+                    <Image src={image2} alt="slide 2" />
+                    <Image src={image3} alt="slide 3" />
+                    <Image src={image4} alt="slide 4" />
+                    <Image src={image5} alt="slide 5" />
                 </Carousel>
                 </div>
             </div>
             <div className={styles.right_content}>
                 <div className={styles.login_card_container}>
                     <div className={styles.login_card}>
-                        <Image src={logo} height="60" width="180" />
+                        <Image src={logo} height="60" width="180" alt='logo'/>
                         <TextField value={email} onChange={(e)=>{setEmail(e.target.value)}} id="outlined-basic" size='small' label="Email" variant="outlined" fullWidth type={'email'} />
                         <TextField password={password} onChange={(e)=>{setPassword(e.target.value)}} id="outlined-basic" size='small' label="Password" variant="outlined" fullWidth type={'password'} />
                         <div style={{color: "red"}}>{error.isError && error.errorMessage}</div>
@@ -74,7 +74,7 @@ const LogIn = () => {
                         <Link href='/forgotPassword'><a><div className={styles.forgot_option} style={{color: "blue"}}>Forgot Password?</div></a></Link>
                     </div>
                     <div className={styles.signup_option}>
-                        Don't have an account? <Link href='/signup'><a><span style={{color: "blue"}}>Sign Up</span></a></Link>
+                        Don&apos;t have an account? <Link href='/signup'><a><span style={{color: "blue"}}>Sign Up</span></a></Link>
                     </div>
                 </div>
             </div>

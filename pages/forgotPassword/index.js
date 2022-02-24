@@ -32,7 +32,7 @@ const ForgotPassword = () => {
       <div className={styles.main_container}>
         <div className={styles.signup_card_container}>
             <div className={styles.signup_card}>
-                <Image src={logo} height="60" width="180" />
+                <Image src={logo} height="60" width="180" alt='logo' />
                 <TextField value={email} onChange={(e)=>{setEmail(e.target.value)}} id="outlined-basic" size='small' label="Email" variant="outlined" fullWidth type={'email'} />
                 {/* <TextField id="outlined-basic" size='small' label="Password" variant="outlined" fullWidth type={'password'} /> */}
 

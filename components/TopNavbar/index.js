@@ -53,7 +53,7 @@ const NavBar = () => {
               component="div"
               sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
             >
-              <Image height={60} width={220} src={Logo} className="logoImage" />
+              <Image height={60} width={220} src={Logo} className="logoImage" alt="logo" />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
