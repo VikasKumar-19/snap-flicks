@@ -1,7 +1,21 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
 import HomeProfileFeeds from '../components/HomeProfileFeeds'
+import { AuthContext } from '../context/AuthWrapper'
 
 export default function Home() {
+
+  const {user} = useContext(AuthContext);
+  const router = useRouter();
+
+  console.log(user);
+
+  if(!user){
+    router.push("/login");
+    return null;
+  }
+
   return (
     <div>
       <Head>

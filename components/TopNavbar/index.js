@@ -44,7 +44,7 @@ const NavBar = () => {
 
   return (
     <>
-      <AppBar position="sticky" sx={{backgroundColor: "#e55039"}}>
+      <AppBar position="sticky" sx={{backgroundColor: "#ffcccc"}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -53,7 +53,7 @@ const NavBar = () => {
               component="div"
               sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
             >
-              <Image height={60} width={220} src={Logo} className="logoImage" alt="logo" />
+              <Image height={80} width={180} src={Logo} className="logoImage" alt="logo" />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>

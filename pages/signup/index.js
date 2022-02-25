@@ -89,7 +89,7 @@ const SignUp = () => {
       <div className={styles.main_container}>
         <div className={styles.signup_card_container}>
             <div className={styles.signup_card}>
-                <Image src={logo} height="60" width="180" alt='logo'/>
+                <Image src={logo} height="100" width="220" alt='logo'/>
                 <TextField onChange={(e)=>{setEmail(e.target.value)}} value={email} id="outlined-basic" size='small' label="Email" variant="outlined" fullWidth type={'email'} />
                 <TextField onChange={(e)=>{setPassword(e.target.value)}} value={password} id="outlined-basic" size='small' label="Password" variant="outlined" fullWidth type={'password'} />
                 <TextField onChange={(e)=>{setName(e.target.value)}} id="outlined-basic" size='small' label="Full Name" variant="outlined" fullWidth />

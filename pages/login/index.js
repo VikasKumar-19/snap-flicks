@@ -64,7 +64,7 @@ const LogIn = () => {
             <div className={styles.right_content}>
                 <div className={styles.login_card_container}>
                     <div className={styles.login_card}>
-                        <Image src={logo} height="60" width="180" alt='logo'/>
+                        <Image src={logo} height="100" width="220" alt='logo'/>
                         <TextField value={email} onChange={(e)=>{setEmail(e.target.value)}} id="outlined-basic" size='small' label="Email" variant="outlined" fullWidth type={'email'} />
                         <TextField password={password} onChange={(e)=>{setPassword(e.target.value)}} id="outlined-basic" size='small' label="Password" variant="outlined" fullWidth type={'password'} />
                         <div style={{color: "red"}}>{error.isError && error.errorMessage}</div>
