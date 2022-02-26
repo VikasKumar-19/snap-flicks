@@ -18,7 +18,8 @@ import { AuthContext } from "../../context/AuthWrapper";
 
 const settings = ["Profile", "Theme", "Logout"];
 
-const NavBar = () => {
+const NavBar = ({userData}) => {
+
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -32,7 +33,7 @@ const NavBar = () => {
   async function handleSettingItem(setting){
     if(setting === "Logout"){
       let user = await signOutUser();
-      console.log(user);
+      console.log(user, "logout");
     }
 
     handleCloseUserMenu();
@@ -76,7 +77,7 @@ const NavBar = () => {
               </Box>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, display:{xs:"flex"} }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src={userData?.imageUrl} />
                 </IconButton>
               </Tooltip>
               <Menu

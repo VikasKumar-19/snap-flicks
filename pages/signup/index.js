@@ -69,7 +69,8 @@ const SignUp = () => {
         let userObj = {
             name: name,
             email: email,
-            uid: userId
+            uid: userId,
+            posts: []
         }
         await uploadProfileImage(profileImage, userObj);
     }

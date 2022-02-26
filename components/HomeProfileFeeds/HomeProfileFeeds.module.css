@@ -3,7 +3,7 @@
   /* border: 1px solid black; */
   width: 100%;
   margin: 0 auto;
-  max-width: 360px;
+  max-width: 420px;
   overflow: auto;
   scrollbar-width: 0;
   display: flex;
@@ -16,52 +16,10 @@
   display: none;
 }
 
-.main_video_container{
-  flex-shrink: 0;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  scroll-snap-align: start;
-  /* padding: 20px 0px; */
-}
-
-.main_video_container video{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background-color: aqua;
-}
-
-.video_info{
-  width: 100%;
-  position: absolute;
-  bottom: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0px 14px;
-}
-
-.avatar_name{
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.like_count{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 @media only screen and (min-width: 600px) {
   .videos_container{
     margin: 0 auto;
     height: 75vh;
-  }
-
-  .main_video_container video{
-    border-radius: 15px;
   }
 
 }
