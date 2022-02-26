@@ -13,6 +13,7 @@ const ProfileView = () => {
   const [userData, setUserData] = useState(null);
   const [postIds, setPostIds] = useState([]);
   const [postsData, setPostsData] = useState([]);
+  const [totalLikes, setTotalLikes] = useState(0);
 
   const {user} = useContext(AuthContext);
 
@@ -33,10 +34,14 @@ const ProfileView = () => {
 
   useEffect(()=>{
     let postsData = [];
+    let totalLikes = 0;
     postIds.map((postId)=>{
       onSnapshot(doc(db, "posts", postId), (doc)=>{
-        postsData.push(doc.data());
+        let postData = doc.data();
+        totalLikes += postData.likes.length;
+        postsData.push(postData);
         setPostsData([...postsData]);
+        setTotalLikes(totalLikes);
       })
     })
 
@@ -76,7 +81,7 @@ const ProfileView = () => {
                   <div>Posts</div>
                 </div>
                 <div style={{fontWeight: "600"}} className={styles.profile_posts_details}>
-                  <div>{userData.posts.length}</div>
+                  <div>{totalLikes}</div>
                   <div>Total Likes</div>
                 </div>
               </div>
