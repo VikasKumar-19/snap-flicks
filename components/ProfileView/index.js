@@ -65,7 +65,7 @@ const ProfileView = () => {
     {
       userData && 
       <div>
-        <NavBar />
+        <NavBar userData={userData}/>
         <div>
           <div className={styles.profile_info_section}>
             <div className={styles.profile_info_one}>
