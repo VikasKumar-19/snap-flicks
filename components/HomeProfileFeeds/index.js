@@ -7,7 +7,7 @@ import styles from './HomeProfileFeeds.module.css';
 import { AuthContext } from '../../context/AuthWrapper';
 import { collection, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../../firebase';
-import VideoPost from '../videoPost';
+import VideoPost from '../VideoPost';
 
 
 const HomeProfileFeeds = () => {
