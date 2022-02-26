@@ -24,7 +24,7 @@ const VideoPost = ({post}) => {
     else{
       setLike(false);
     }
-  }, [post])
+  }, [user, post])
   
 
   function handleLikeButton(uid){

@@ -110,7 +110,7 @@ const ProfileView = () => {
             {
               postsData.map((post)=>{
                 return(
-                  <div className={styles.post_container}>
+                  <div key={post.postId} className={styles.post_container}>
                     <video src={post.postUrl} />
                   </div>
                 );
