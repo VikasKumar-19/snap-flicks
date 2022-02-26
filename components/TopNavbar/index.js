@@ -15,10 +15,14 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import SettingsIcon from '@mui/icons-material/Settings';
 import Image from 'next/image';
 import { AuthContext } from "../../context/AuthWrapper";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const settings = ["Profile", "Theme", "Logout"];
 
 const NavBar = ({userData}) => {
+
+  const router = useRouter();
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -34,6 +38,10 @@ const NavBar = ({userData}) => {
     if(setting === "Logout"){
       let user = await signOutUser();
       console.log(user, "logout");
+    }
+
+    if(setting === "Profile"){
+      router.push("/profile");
     }
 
     handleCloseUserMenu();
@@ -69,7 +77,7 @@ const NavBar = ({userData}) => {
             <Box sx={{ flexGrow: 0, display:{xs:"none", sm:"flex"}, alignItems:"center", gap:"20px" }}>
               <Box sx={{display:"flex", gap:"15px"}}>
               <IconButton>
-                <HomeIcon sx={{cursor:"pointer"}} fontSize="large"  />
+                <Link href="/"><a><HomeIcon sx={{cursor:"pointer"}} fontSize="large"  /></a></Link>
               </IconButton>
               <IconButton>
                 <ExploreIcon sx={{cursor:"pointer"}} fontSize="large" />

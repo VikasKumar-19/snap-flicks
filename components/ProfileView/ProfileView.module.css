@@ -10,8 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1.5rem;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  gap: 20px;
 }
 
 .profile_info_two{
@@ -24,22 +23,44 @@
   width: 100%;
 }
 
-.profile_img_container{
+.identity_card{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.profile_img_container{
+  width: 150px;
+  height: 150px;
+}
+
+.profile_img_container img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.posts_numbers{
+  display: flex;
+  font-size: 1.1rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile_posts_details{
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-right: 2px solid rgb(247, 92, 221);
+  padding: 0px 20px;
 }
 
-.profile_img_container img{
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.profile_posts_details:last-of-type{
+  border-right: none;
 }
 
 .bioActive_button:hover{
@@ -98,17 +119,29 @@
     gap: 15px;
     font-size: 1.3rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    align-items: unset;
   }
 
-  .profile_img_container{
+  .identity_card{
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
     gap: 15px;
   }
 
-  .profile_img_container img{
+  .profile_posts_details{
+    padding: 0px 10px;
+  }
+
+  .profile_img_container{
     width: 100px;
     height: 100px;
+  }
+
+  .profile_img_container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .profile_info_two{
