@@ -7,7 +7,6 @@ import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
 import { db } from '../../firebase';
 
 const VideoPost = ({post}) => {
-  console.log(post, "my data");
 
   const {user} = useContext(AuthContext);
   const [like, setLike] = useState(false);

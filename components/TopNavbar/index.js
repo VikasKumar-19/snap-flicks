@@ -17,14 +17,31 @@ import Image from 'next/image';
 import { AuthContext } from "../../context/AuthWrapper";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const settings = ["Profile", "Theme", "Logout"];
 
-const NavBar = ({userData}) => {
+const NavBar = () => {
 
   const router = useRouter();
+  const {signOutUser, user} = React.useContext(AuthContext);
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [userData, setUserData] = React.useState(null);
+  
+  React.useEffect(() => {
+    if(user){
+      const unsub = onSnapshot(doc(db, "users", user.uid), (doc)=>{
+        setUserData(doc.data());
+      })  
+      return () => {
+        unsub();
+      }
+    }
+  
+  }, [])
+  
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -47,13 +64,12 @@ const NavBar = ({userData}) => {
     handleCloseUserMenu();
   }
 
-  const {signOutUser} = React.useContext(AuthContext);
 
 
 
   return (
     <>
-      <AppBar position="sticky" sx={{backgroundColor: "#ffcccc"}}>
+    {user && <AppBar position="sticky" sx={{backgroundColor: "#ffcccc"}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -80,7 +96,7 @@ const NavBar = ({userData}) => {
                 <Link href="/"><a><HomeIcon sx={{cursor:"pointer"}} fontSize="large"  /></a></Link>
               </IconButton>
               <IconButton>
-                <ExploreIcon sx={{cursor:"pointer"}} fontSize="large" />
+                <Link href="/explore"><a><ExploreIcon sx={{cursor:"pointer"}} fontSize="large" /></a></Link>
               </IconButton>
               </Box>
               <Tooltip title="Open settings">
@@ -113,7 +129,8 @@ const NavBar = ({userData}) => {
             </Box>
           </Toolbar>
         </Container>
-      </AppBar>
+      </AppBar> }
+      
     </>
   );
 };

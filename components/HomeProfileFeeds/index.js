@@ -45,7 +45,6 @@ const HomeProfileFeeds = () => {
     <>{
       userData && 
       <>
-        <NavBar  userData={userData}/>
         <UploadButton userData={userData}/>
         <div className={styles.videos_container}>
           {
@@ -54,8 +53,6 @@ const HomeProfileFeeds = () => {
             })
           }
         </div>
-        <BottomNavbar />
-
       </>
     }
     </>
