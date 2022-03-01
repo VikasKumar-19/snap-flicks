@@ -17,7 +17,7 @@
 .video_info{
   width: 100%;
   position: absolute;
-  bottom: 15px;
+  top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
