@@ -113,46 +113,50 @@ const BottomNavbar = () => {
   }
 
 
-  return (
-    <>
-      {uploadError.error && <Alert severity="error">{uploadError.errorMsg}</Alert>}
-      <Box  sx={{ display:{sm:"none"}, position: 'sticky', bottom: 0, left: 0, right: 0, width: '100%'}} elevation={3} >
-        {
-          isLoading &&
-          <LinearProgress sx={{mt: '1px'}} variant="determinate" value={progress} color="secondary"  />
-        }
-        <BottomNavigation
-          sx={{backgroundColor: "#f7eff1" }}
-          showLabels={false}
-          value={value}
-          onChange={(event, newValue) => {
+  return (<>
+    {
+      user && 
+      <>
+        {uploadError.error && <Alert severity="error">{uploadError.errorMsg}</Alert>}
+        <Box  sx={{ display:{sm:"none"}, position: 'sticky', bottom: 0, left: 0, right: 0, width: '100%'}} elevation={3} >
+          {
+            isLoading &&
+            <LinearProgress sx={{mt: '1px'}} variant="determinate" value={progress} color="secondary"  />
+          }
+          <BottomNavigation
+            sx={{backgroundColor: "#f7eff1" }}
+            showLabels={false}
+            value={value}
+            onChange={(event, newValue) => {
 
-            console.log(event,"so");
-            setValue(newValue);
-            switch(newValue){
-              case 0: router.push("/");
-                      break;
-              case 1: router.push("/explore");
-                      break;
-              case 2: router.push("/profile");
-                      break;
+              console.log(event,"so");
+              setValue(newValue);
+              switch(newValue){
+                case 0: router.push("/");
+                        break;
+                case 1: router.push("/explore");
+                        break;
+                case 2: router.push("/profile");
+                        break;
+                
+              }
+            }}
+          >
+            <BottomNavigationAction disableTouchRipple={true} label="Home" icon={<HomeIcon />} />
+            <BottomNavigationAction disableTouchRipple={true} label="Explore" icon={<ExploreIcon />} />
+            <BottomNavigationAction disableTouchRipple={true} label="Profile" icon={<AccountCircleRoundedIcon />} />
+            <BottomNavigationAction disableTouchRipple={true} label="Upload" icon={
+              <Button sx={{border: 'none', color:"inherit"}} fullWidth disableRipple={true} component="label">
+                <input onChange={handleUploadFile} style={{display: "none"}} accept='video/mp4,video/x-m4v,video/*' id="contained-button-file" multiple type="file" />
+                <VideoCallRoundedIcon  />
+              </Button>
+                // <VideoCallRoundedIcon />
               
-            }
-          }}
-        >
-          <BottomNavigationAction disableTouchRipple={true} label="Home" icon={<HomeIcon />} />
-          <BottomNavigationAction disableTouchRipple={true} label="Explore" icon={<ExploreIcon />} />
-          <BottomNavigationAction disableTouchRipple={true} label="Profile" icon={<AccountCircleRoundedIcon />} />
-          <BottomNavigationAction disableTouchRipple={true} label="Upload" icon={
-            <Button sx={{border: 'none', color:"inherit"}} fullWidth disableRipple={true} component="label">
-              <input onChange={handleUploadFile} style={{display: "none"}} accept='video/mp4,video/x-m4v,video/*' id="contained-button-file" multiple type="file" />
-              <VideoCallRoundedIcon  />
-            </Button>
-              // <VideoCallRoundedIcon />
-            
-          } />
-        </BottomNavigation>
-      </Box>
+            } />
+          </BottomNavigation>
+        </Box>
+      </>
+    }
     </>
   )
 }

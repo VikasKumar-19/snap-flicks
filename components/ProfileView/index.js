@@ -2,6 +2,7 @@ import { doc, onSnapshot, updateDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../../context/AuthWrapper';
 import { db } from '../../firebase';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import BottomNavbar from '../BottomNavbar';
 import NavBar from '../TopNavbar';
 import styles from "./ProfileView.module.css";
@@ -73,19 +74,24 @@ const ProfileView = () => {
       })
     }
   }, [isBioActive])
-  
 
   return (
     <>
     {
       userData && 
-      <div>
+      <div className={styles.profile_container}>
         <div>
           <div className={styles.profile_info_section}>
             <div className={styles.profile_info_one}>
               <div className={styles.identity_card}>
                 <div className={styles.profile_img_container}>
-                  <img src={userData.imageUrl}  alt="profile image" />
+                  {
+                    userData.imageUrl ? <img src={userData.imageUrl}  alt="profile image" />
+                    : <div style={{ cursor: "pointer",width: "120px", height: "120px", borderRadius: "50% ", backgroundColor: "gray", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
+                        <CameraAltIcon style={{color: "white"}} />
+                        <span style={{fontSize: "16px", color: "white"}}>Upload photo</span>
+                      </div>
+                  }
                 </div>
                 <span style={{fontWeight: "700"}}>{userData.name}</span>
               </div>
@@ -122,6 +128,7 @@ const ProfileView = () => {
           </div>
           <div className={styles.profile_posts_section}>
             {
+              postsData.length > 0?
               postsData.map((post)=>{
                 return(
                   <div key={post.postId} className={styles.post_container}>
@@ -129,6 +136,7 @@ const ProfileView = () => {
                   </div>
                 );
               })
+              : <span style={{fontSize: "24px", margin: "25px 0px"}}>No Posts</span>
             }
           </div>
         </div>

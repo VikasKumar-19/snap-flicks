@@ -72,7 +72,14 @@ const SignUp = () => {
             uid: userId,
             posts: []
         }
-        await uploadProfileImage(profileImage, userObj);
+        console.log(profileImage, "img");
+        if(profileImage)
+          await uploadProfileImage(profileImage, userObj);
+        else{
+          await setDoc(doc(db,"users", userObj.uid), userObj);
+          console.log("doc added");
+          setIsLoading(false);
+        }
     }
     catch(err){
         console.log(err.message);
