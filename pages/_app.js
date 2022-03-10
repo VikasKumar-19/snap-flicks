@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import BottomNavbar from "../components/BottomNavbar";
 import NavBar from "../components/TopNavbar";
 import AuthWrapper from "../context/AuthWrapper";
-import "../styles/globals.css";
+import "../styles/global.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
