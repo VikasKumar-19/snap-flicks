@@ -10,10 +10,18 @@ const VideoPost = ({post}) => {
 
   const {user} = useContext(AuthContext);
   const [like, setLike] = useState(false);
+  const [isPlay, setIsPlay] = useState(false);
 
   function playVideo(e){
     e.stopPropagation();
-    e.target.play();
+    if(isPlay){
+      setIsPlay(false);
+      e.target.pause();
+    }
+    else{
+      setIsPlay(true);
+      e.target.play();
+    }
   }
 
   useEffect(() => {
