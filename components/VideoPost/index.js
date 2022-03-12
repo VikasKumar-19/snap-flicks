@@ -48,6 +48,14 @@ const VideoPost = ({post}) => {
     }
   }
 
+  function handleAutoScroll(e){
+    let videoContainer = e.target.parentElement; 
+    let nextVideoContainer = videoContainer.nextElementSibling;
+    if(nextVideoContainer){
+      nextVideoContainer.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    }
+  }
+
   function callbackFunction(entries){
     const [entry] = entries;
     console.log(entry);
@@ -84,7 +92,7 @@ const VideoPost = ({post}) => {
 
   return (
     <div className={styles.main_video_container}>
-      <video ref={targetRef} onClick={playVideo} src={post.postUrl} muted="muted" />
+      <video onEnded={handleAutoScroll} ref={targetRef} onClick={playVideo} src={post.postUrl} muted="muted" />
       <div className={styles.video_info}>
         <div style={{backgroundColor: "rgba(0, 0, 0, 0.397)", borderRadius: "15px", padding: "0px 14px"}} className={styles.avatar_name}>
           <Avatar sx={{width: "35px", height: "35px"}} alt="Cindy Baker" src={post.profileUrl} />
