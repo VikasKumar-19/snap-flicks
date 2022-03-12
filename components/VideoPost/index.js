@@ -1,5 +1,5 @@
 import { Avatar } from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import styles from './VideoPost.module.css';
 import { AuthContext } from '../../context/AuthWrapper';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
@@ -11,6 +11,7 @@ const VideoPost = ({post}) => {
   const {user} = useContext(AuthContext);
   const [like, setLike] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
+  const targetRef = useRef(null);
 
   function playVideo(e){
     e.stopPropagation();
@@ -47,9 +48,43 @@ const VideoPost = ({post}) => {
     }
   }
 
+  function callbackFunction(entries){
+    const [entry] = entries;
+    console.log(entry);
+    if(entry.isIntersecting){
+      entry.target.play();
+    }
+    else{
+      entry.target.pause();
+    }
+  }
+
+  const options = useMemo(()=>{
+    return {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.6
+    }
+  },[]);
+
+  useEffect(()=>{
+    const observer = new IntersectionObserver(callbackFunction, options);
+    const currentTarget = targetRef.current;
+    if(currentTarget){
+      observer.observe(currentTarget);
+    }
+
+    return ()=>{
+      if(currentTarget){
+        observer.unobserve(currentTarget)
+      }
+    }
+  },[targetRef, options])
+
+
   return (
     <div className={styles.main_video_container}>
-      <video onClick={playVideo} src={post.postUrl} />
+      <video ref={targetRef} onClick={playVideo} src={post.postUrl} muted="muted" />
       <div className={styles.video_info}>
         <div style={{backgroundColor: "rgba(0, 0, 0, 0.397)", borderRadius: "15px", padding: "0px 14px"}} className={styles.avatar_name}>
           <Avatar sx={{width: "35px", height: "35px"}} alt="Cindy Baker" src={post.profileUrl} />
