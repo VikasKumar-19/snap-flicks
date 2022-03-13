@@ -4,6 +4,8 @@ import styles from './VideoPost.module.css';
 import { AuthContext } from '../../context/AuthWrapper';
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore';
 import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteOutlined';
+import VolumeOffIcon from '@mui/icons-material/VolumeOff';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import { db } from '../../firebase';
 
 const VideoPost = ({post}) => {
@@ -11,6 +13,7 @@ const VideoPost = ({post}) => {
   const {user} = useContext(AuthContext);
   const [like, setLike] = useState(false);
   const [isPlay, setIsPlay] = useState(false);
+  const [isMute, setIsMute] = useState(true);
   const targetRef = useRef(null);
 
   function playVideo(e){
@@ -56,6 +59,18 @@ const VideoPost = ({post}) => {
     }
   }
 
+  function handleMuteVideo(){
+    if(isMute){
+      targetRef.current.muted=false;
+      setIsMute(false);
+    }
+    else{
+      targetRef.current.muted=true;
+      setIsMute(true);
+    }
+
+  }
+
   function callbackFunction(entries){
     const [entry] = entries;
     console.log(entry);
@@ -94,9 +109,13 @@ const VideoPost = ({post}) => {
     <div className={styles.main_video_container}>
       <video onEnded={handleAutoScroll} ref={targetRef} onClick={playVideo} src={post.postUrl} muted="muted" />
       <div className={styles.video_info}>
-        <div style={{backgroundColor: "rgba(0, 0, 0, 0.397)", borderRadius: "15px", padding: "0px 14px"}} className={styles.avatar_name}>
-          <Avatar sx={{width: "35px", height: "35px"}} alt="Cindy Baker" src={post.profileUrl} />
-          <p style={{color: "white"}}>{post.userName}</p>
+        <div className='flex flex-col gap-2' style={{backgroundColor: "rgba(0, 0, 0, 0.397)", borderRadius: "15px", padding: "0px 14px"}} >
+          <div className={styles.avatar_name}>
+            <Avatar sx={{width: "35px", height: "35px"}} alt="Cindy Baker" src={post.profileUrl} />
+            <p style={{color: "white"}}>{post.userName}</p>
+          </div>
+          {isMute?<VolumeOffIcon onClick={handleMuteVideo} className='text-white cursor-pointer' />
+          : <VolumeUpIcon onClick={handleMuteVideo} className='text-white cursor-pointer'/>}
         </div>
         <div onClick={()=>{handleLikeButton(user.uid)}} style={{backgroundColor: "rgba(0, 0, 0, 0.397)", borderRadius: "15px", padding: "0px 14px", color: "red", cursor: "pointer"}} className={styles.like_count}>
           <FavoriteOutlinedIcon style={like?{color: "red"}:{color:"white"}}/> 
